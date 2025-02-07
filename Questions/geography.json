@@ -1,0 +1,20 @@
+
+{
+    "geography": [
+    {
+      "question": "What is the most abundant mineral in Earth's crust?",
+      "options": ["Quartz", "Feldspar", "Mica", "Calcite"],
+      "correct": 1
+    },
+    {
+      "question": "What type of rock is formed from cooled lava?",
+      "options": ["Sedimentary", "Metamorphic", "Igneous", "Fossiliferous"],
+      "correct": 2
+    },
+    {
+      "question": "What is the name of the supercontinent that existed 300 million years ago?",
+      "options": ["Gondwana", "Laurasia", "Pangea", "Eurasia"],
+      "correct": 2
+    }
+  ]
+}

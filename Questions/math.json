@@ -1,0 +1,19 @@
+{
+    "math": [
+    {
+      "question": "What is the square root of 144?",
+      "options": ["10", "12", "14", "16"],
+      "correct": 1
+    },
+    {
+      "question": "What is 7 x 8?",
+      "options": ["54", "56", "58", "60"],
+      "correct": 1
+    },
+    {
+      "question": "What is 35 divided by 7?",
+      "options": ["3", "4", "5", "6"],
+      "correct": 2
+    }
+  ]
+}

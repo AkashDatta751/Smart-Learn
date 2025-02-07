@@ -1,0 +1,20 @@
+{
+    "science": [
+      {
+        "question": "What is the boiling point of water?",
+        "options": ["100C", "150C", "200C", "250C"],
+        "correct": 0
+      },
+      {
+        "question": "What is the chemical symbol for gold?",
+        "options": ["Au", "Ag", "Fe", "Hg"],
+        "correct": 0
+      },
+      {
+        "question": "What is the fastest animal?",
+        "options": ["Cheetah", "Peregrine Falcon", "Golden Eagle", "Lion"],
+        "correct": 1
+      }
+    ]
+
+  }

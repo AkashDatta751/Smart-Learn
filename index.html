@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Management System</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="content-wrapper">
+            <div class="quiz-container">
+                <div class="header">
+                    <h1>Smart Learn</h1>
+                    <p>Create, import, and take quizzes</p>
+                </div>
+        
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="showSection('quiz')">Take Quiz</button>
+                    <button class="tab-btn" onclick="showSection('add-question')">Add Question</button>
+                    <button class="tab-btn" onclick="showSection('import')">Import Questions</button>
+                </div>
+        
+                <!-- Quiz Section -->
+                <div id="quiz-section" class="quiz-section active">
+                    <div class="subject-selector">
+                        <select id="subject" onchange="loadQuestions()">
+                            <option value="math">Mathematics</option>
+                            <option value="science">Science</option>
+                            <option value="history">History</option>
+                            <option value="geography">Geography</option>
+                        </select>
+                    </div>
+        
+                    <div class="timer" id="timer">Time: 00:00</div>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+        
+                    <div id="questions"></div>
+                    <button class="submit-btn" onclick="submitQuiz()">
+                        <i class="fas fa-check-circle"></i> Submit Quiz
+                    </button>
+                    <div class="score" id="score"></div>
+                </div>
+        
+                <!-- Add Question Section -->
+                <div id="add-question-section" class="section">
+                    <div class="question-form">
+                        <h2>Add New Question</h2>
+                        <form id="question-form" onsubmit="addQuestion(event)">
+                            <div class="form-group">
+                                <label for="new-subject">Subject</label>
+                                <select id="new-subject" required>
+                                    <option value="math">Mathematics</option>
+                                    <option value="science">Science</option>
+                                    <option value="history">History</option>
+                                    <option value="geography">Geography</option>
+                                </select>
+                            </div>
+        
+                            <div class="form-group">
+                                <label for="new-question">Question</label>
+                                <textarea id="new-question" rows="3" required></textarea>
+                            </div>
+        
+                            <div class="form-group">
+                                <label>Options</label>
+                                <div id="options-container">
+                                    <div class="option-group">
+                                        <input type="radio" name="correct" value="0" required>
+                                        <input type="text" placeholder="Option 1" required>
+                                    </div>
+                                    <div class="option-group">
+                                        <input type="radio" name="correct" value="1">
+                                        <input type="text" placeholder="Option 2" required>
+                                    </div>
+                                    <div class="option-group">
+                                        <input type="radio" name="correct" value="2">
+                                        <input type="text" placeholder="Option 3" required>
+                                    </div>
+                                    <div class="option-group">
+                                        <input type="radio" name="correct" value="3">
+                                        <input type="text" placeholder="Option 4" required>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <button type="submit" class="add-question-btn">
+                                <i class="fas fa-plus-circle"></i> Add Question
+                            </button>
+                        </form>
+                    </div>
+                </div>
+        
+                <!-- Import Section -->
+                <div id="import-section" class="section">
+                        <form id="json-form" onsubmit="handleJSONUpload(event)">
+                            <div class="form-group">
+                                <label for="json-subject">Subject</label>
+                                <select id="json-subject" required>
+                                    <option value="math">Mathematics</option>
+                                    <option value="science">Science</option>
+                                    <option value="history">History</option>
+                                    <option value="geography">Geography</option>
+                                </select>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="json-file">JSON File</label>
+                                <input type="file" id="json-file" accept=".json" required>
+                                <small class="help-text">Upload a JSON file containing an array of questions</small>
+                                <small class="help-text">Format: [{"question": "...", "options": ["...", "...", "...", "..."], "correct": 0-3}]</small>
+                            </div>
+                        
+                            <div class="button-group">
+                                <button type="submit" class="import-btn">
+                                    <i class="fas fa-file-import"></i> Import Questions
+                                </button>
+                                <button type="button" class="clear-btn" onclick="clearJSONFile()">
+                                    <i class="fas fa-times-circle"></i> Clear File
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+        <div class="footer">
+             <p>Developed with <a href="https://akashdatta751.github.io/portfolio-website/" target="_blank">Akash Datta</a> and Prerona Tanjin Kotha by Your Name</p>
+            <p>
+                <a href="https://github.com/AkashDatta751/Smart-Learn.git" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </p>
+            <p>© 2025 Quiz Management System. All rights reserved.</p>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

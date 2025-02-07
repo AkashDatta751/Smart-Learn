@@ -1,0 +1,20 @@
+{
+    "history": [
+      {
+        "question": "Who was the first President of the United States?",
+        "options": ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"],
+        "correct": 0
+      },
+      {
+        "question": "In which year did World War II end?",
+        "options": ["1942", "1945", "1950", "1939"],
+        "correct": 1
+      },
+      {
+        "question": "What was the main cause of the French Revolution?",
+        "options": ["Economic Crisis", "Industrial Revolution", "Religious Conflicts", "Scientific Discoveries"],
+        "correct": 0
+      }
+    ]
+  }
+  

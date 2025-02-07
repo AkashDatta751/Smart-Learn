@@ -1,0 +1,505 @@
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5f7fa;
+    --success-color: #66bb6a;
+    --error-color: #ef5350;
+    --text-color: #2c3e50;
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.quiz-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.header h1 {
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+    justify-content: center;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: none;
+    background: #eee;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Sections */
+.section, .quiz-section {
+    display: none;
+}
+
+.section.active, .quiz-section.active {
+    display: block;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+.help-text {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* Option Groups */
+.option-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.option-group input[type="radio"] {
+    margin: 0;
+}
+
+/* Quiz specific styles */
+.question {
+    background: white;
+    margin-bottom: 25px;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.question h3 {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-size: 1.2em;
+}
+
+.options {
+    display: grid;
+    gap: 12px;
+}
+
+.option {
+    padding: 15px 20px;
+    border: 2px solid #eee;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.option:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--primary-color);
+}
+
+.option.selected {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.option.correct {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+}
+
+.option.incorrect {
+    background-color: var(--error-color);
+    border-color: var(--error-color);
+    color: white;
+}
+
+/* Forms */
+.question-form, .json-form {
+    background: white;
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.question-form h2, .json-form h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+.submit-btn, .add-question-btn, .import-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover, .add-question-btn:hover, .import-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+/* Toast notification */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    background: var(--success-color);
+    color: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateX(150%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.error {
+    background: var(--error-color);
+}
+
+.toast.success {
+    background: var(--success-color);
+}
+
+/* Progress bar */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+/* Timer */
+.timer {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+/* Score display */
+.score {
+    display: none;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+    animation: fadeIn 0.5s ease;
+}
+
+.score.visible {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .quiz-container {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .question {
+        padding: 15px;
+    }
+
+    .option {
+        padding: 12px 15px;
+    }
+}
+/* Add these styles to styles.css */
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.button-group button {
+    flex: 1;
+}
+
+.clear-btn {
+    background-color: #ef5350;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.clear-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 83, 80, 0.3);
+}
+
+/* Update the existing import-btn style to remove margin-top */
+.import-btn {
+    margin-top: 0;
+}
+
+/* Add these styles at the end of your existing styles.css file */
+
+.footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+    color: var(--text-color);
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #2779bd;
+}
+
+.footer .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer .social-link i {
+    font-size: 1.1em;
+}
+
+/* Update quiz-container to account for footer */
+.quiz-container {
+    position: relative;
+    margin: 20px auto;
+    min-height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Update responsive design */
+@media (max-width: 600px) {
+    .footer {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+}
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5f7fa;
+    --success-color: #66bb6a;
+    --error-color: #ef5350;
+    --text-color: #2c3e50;
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.quiz-container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 40px);
+}
+
+/* Main content wrapper */
+.content-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Rest of your existing styles remain the same until the footer section */
+
+.footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+    text-align: center;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #2779bd;
+}
+
+.footer .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer .social-link i {
+    font-size: 1.1em;
+}
+
+/* Rest of your existing styles... */
+
+/* Update responsive design */
+@media (max-width: 600px) {
+    .quiz-container {
+        padding: 20px;
+        margin: 10px;
+        min-height: calc(100vh - 20px);
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .tabs {
+        flex-direction: column;
+    }
+
+    .question {
+        padding: 15px;
+    }
+
+    .option {
+        padding: 12px 15px;
+    }
+
+    .footer {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+}
