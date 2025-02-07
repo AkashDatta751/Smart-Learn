@@ -1,1 +1,1 @@
-# smart-learn
+# smart-learn by Akash and kotha 
